@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subrata Sarkar | Oracle AI, APEX & Docs-as-Code Architect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1b5a90;
+            --primary-dark: #123d63;
+            --accent: #257cb6;
+            --highlight: #d9534f;
+            --bg-light: #f8f9fa;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        header {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
+            border-left: 6px solid var(--primary);
+        }
+
+        .profile-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .profile-info h1 {
+            color: var(--accent);
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .profile-info h2 {
+            color: var(--highlight);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .profile-info p {
+            color: var(--text-main);
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .profile-img-container {
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Highlight Alert Box */
+        .summary-box {
+            background-color: #eef6fc;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+        }
+
+        .summary-box p {
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+        }
+
+        .summary-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* General Section Styling */
+        section {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Grid Layouts */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        /* Cards */
+        .card {
+            background: #fdfdfd;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .card h3 {
+            color: var(--primary-dark);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .card-list {
+            list-style-type: none;
+        }
+
+        .card-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .card-list li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Experience Timeline */
+        .timeline-item {
+            border-left: 2px solid var(--primary);
+            padding-left: 18px;
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 6px;
+        }
+
+        .timeline-role {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            color: var(--highlight);
+            margin-bottom: 4px;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        /* Video List */
+        .video-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .video-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #d9534f;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            background: #fff5f5;
+            border: 1px solid #fecaca;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .video-btn:hover {
+            background: #ffe4e4;
+        }
+
+        /* Contact & CTA Buttons */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-linkedin { background: #0a66c2; color: #fff; }
+        .btn-whatsapp { background: #25d366; color: #fff; }
+        .btn-outline { border: 1px solid var(--primary); color: var(--primary); background: transparent; }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        @media (max-width: 600px) {
+            .profile-wrapper {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .profile-info { text-align: center; }
+            .section-title { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header Section -->
+    <header>
+        <div class="profile-wrapper">
+            <div class="profile-info">
+                <h1>Subrata Sarkar</h1>
+                <h2>Technical Content Engineer | Oracle AI & APEX Consultant | Docs-as-Code Architect</h2>
+                <p>Specializing in modernizing Oracle enterprise applications with AI, Vector Search, RAG architectures, and automated Docs-as-Code documentation pipelines.</p>
+            </div>
+            <div class="profile-img-container">
+                <img src="./Oracle Database Architect _ Oracle APEX _ AI Consulting_files/Subrara.JPG" alt="Subrata Sarkar" class="profile-img" onerror="this.src='https://via.placeholder.com/110?text=Subrata'">
+            </div>
+        </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <div class="summary-box">
+        <p>With <strong>30+ years of experience</strong> in Oracle technologies and financial services, I specialize in building AI-enabled enterprise solutions using <strong>Oracle Database 26ai, Oracle APEX, PL/SQL, Vector Search</strong>, and <strong>Retrieval-Augmented Generation (RAG)</strong>.</p>
+        <p>Additionally, as a <strong>Docs-as-Code Architect</strong>, I design automated AI agent publishing pipelines that convert extensive product specifications into dynamic static site portals hosted on GitHub Pages—slashing cycle times from days to minutes.</p>
+    </div>
+
+    <!-- Areas of Expertise -->
+    <section>
+        <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Core Competencies & Expertise</h2>
+        <div class="grid-4">
+            <div class="card">
+                <h3>Oracle AI & Database 26ai</h3>
+                <ul class="card-list">
+                    <li>Vector Search & DBMS_VECTOR</li>
+                    <li>DBMS_VECTOR_CHAIN</li>
+                    <li>DBMS_CLOUD_AI / SELECT AI</li>
+                    <li>RAG Architectures</li>
+                    <li>Semantic Search & OML</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Docs-as-Code & AI Tooling</h3>
+                <ul class="card-list">
+                    <li>GitHub Pages & Enterprise SSG</li>
+                    <li>Copilot Agent & Multimodal AI</li>
+                    <li>Gemini 4 Argon / GPT-6 Astra</li>
+                    <li>Information Architecture</li>
+                    <li>Traceability & Indexing</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Oracle APEX & Dev</h3>
+                <ul class="card-list">
+                    <li>Oracle APEX 24.2</li>
+                    <li>AI Assistant Integration</li>
+                    <li>REST APIs & PL/SQL Tuning</li>
+                    <li>AWR & SQL Optimization</li>
+                    <li>Forms Modernization</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Financial Domain</h3>
+                <ul class="card-list">
+                    <li>Core Banking & Payments</li>
+                    <li>Regulatory Batch Processing</li>
+                    <li>Claims & Data Warehousing</li>
+                    <li>FLEXCUBE Customizations</li>
+                    <li>Client 360 Portals</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Capabilities & Highlights -->
+    <section>
+        <h2 class="section-title"><i class="fa-solid fa-star"></i> Featured Capabilities</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3><i class="fa-solid fa-bolt" style="color: #eab308;"></i> 100x Documentation Velocity</h3>
+                <p>Engineered an automated Docs-as-Code pipeline using GitHub Copilot and Gemini 4 Argon, converting a 311-page Product Description Document (PDD) into an interactive, searchable web portal in 15 minutes.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-brain" style="color: #3b82f6;"></i> AI Enablement (Oracle 26ai)</h3>
+                <p>Designed and deployed RAG solutions with Oracle Database 26ai and Oracle APEX, enabling seamless natural language interaction with enterprise documentation and knowledge repositories.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-gauge-high" style="color: #10b981;"></i> Performance Engineering</h3>
+                <p>Achieved massive query acceleration (e.g., cutting batch processing times from 40 to 2 minutes) using advanced PL/SQL optimization, partitioning, multi-threading, and Oracle In-Memory.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-arrows-rotate" style="color: #8b5cf6;"></i> Application Modernization</h3>
+                <p>Successfully migrated complex legacy Oracle Forms and Reports environments to modern, responsive Oracle APEX web applications integrated with REST services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section>
+        <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Recent Professional Experience</h2>
+        
+        <div class="timeline-item">
+            <div class="timeline-role">Technical Content Engineer & AI Documentation Architect</div>
+            <div class="timeline-company">Virtusa USA — Client: FISERV | New Jersey, USA</div>
+            <div class="timeline-date">January 2025 – Present</div>
+            <ul class="card-list">
+                <li>Architected the CashFlow Central Document Hub pipeline on Fiserv's GitHub Enterprise Pages.</li>
+                <li>Orchestrated Copilot Agents & Gemini 4 Argon to convert multi-page PDFs into structured directory trees and web portals with zero manual copy-paste overhead.</li>
+                <li>Preserved 370+ visual assets and automated page-level source traceability for audit verification.</li>
+                <li>Built supplementary GenAI/RAG prototypes using Oracle Database 26ai (DBMS_VECTOR_CHAIN).</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-role">Senior Oracle PL/SQL & APEX Developer</div>
+            <div class="timeline-company">Cigna Evernorth / Virtusa | Jersey City, NJ</div>
+            <div class="timeline-date">July 2024 – January 2025</div>
+            <ul class="card-list">
+                <li>Built predictive ML models in Oracle ML with 94% accuracy.</li>
+                <li>Engineered multi-threaded PL/SQL processing pipelines reducing invoice runtime by 84%.</li>
+                <li>Modernized legacy Oracle Forms to Oracle APEX 24.2.</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-role">Senior Developer & Technical Lead</div>
+            <div class="timeline-company">Metropolitan Transportation Authority (MTA) / Virtusa | USA</div>
+            <div class="timeline-date">April 2024 – July 2024</div>
+            <ul class="card-list">
+                <li>Spearheaded Git-based version control strategy for APEX modernization.</li>
+                <li>Attained a 99% performance boost utilizing Oracle In-Memory tuning.</li>
+            </ul>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-role">Senior Oracle Specialist / Systems Analyst</div>
+            <div class="timeline-company">Citi Bank / Virtusa | Jersey City, NJ</div>
+            <div class="timeline-date">April 2023 – April 2024</div>
+            <ul class="card-list">
+                <li>Optimized regulatory batch workloads on a 60 TB financial data warehouse from 40 to 2 minutes via PL/SQL multi-threading.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Certifications, Technical Demos & Portfolio -->
+    <section>
+        <div class="grid-2">
+            <div>
+                <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications</h2>
+                <ul class="card-list">
+                    <li>Oracle PL/SQL Certified Professional (OCP)</li>
+                    <li>Oracle SQL Certified Associate (OCA)</li>
+                    <li>Oracle Cloud Infrastructure (OCI) Foundations Certified Associate</li>
+                    <li>Oracle DBA Certified Professional</li>
+                    <li>B.E., Jadavpur University, Calcutta, India</li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="section-title"><i class="fa-solid fa-video"></i> Video Demos</h2>
+                <div class="video-links">
+                    <a href="https://youtu.be/9rFRfqA6w4M?si=aWfC4B6RXssBpucZ" target="_blank" class="video-btn">
+                        <i class="fa-brands fa-youtube"></i> Self-Correcting Auditor RAG (SCAR)
+                    </a>
+                    <a href="https://youtu.be/whiGO4U5ckg?si=W8sAwZsxjzavIX2b" target="_blank" class="video-btn">
+                        <i class="fa-brands fa-youtube"></i> Multi Agent RAG Video Demo
+                    </a>
+                    <a href="https://youtu.be/GkAb37YX63E" target="_blank" class="video-btn">
+                        <i class="fa-brands fa-youtube"></i> OML, Vector Search, RAG & Multi-Agent
+                    </a>
+                    <a href="https://youtu.be/T3oLHXThI14" target="_blank" class="video-btn">
+                        <i class="fa-brands fa-youtube"></i> AI Enablement of Oracle DB with APEX
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer>
+        <h2 style="color: var(--primary); margin-bottom: 10px;">Let's Connect</h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 15px auto;">
+            Available for Oracle AI consulting, Docs-as-Code pipeline architecture, performance tuning, and Oracle APEX modernizations.
+        </p>
+
+        <div class="btn-group">
+            <a href="mailto:subrata.sarkar@gmail.com" class="btn btn-primary">
+                <i class="fa-solid fa-envelope"></i> Email Me
+            </a>
+            <a href="https://www.linkedin.com/in/subrata-sarkar-21497a1b9" target="_blank" class="btn btn-linkedin">
+                <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://wa.me/919686376004?text=Hi%20Subrata,%20I%20saw%20your%20portfolio!" target="_blank" class="btn btn-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+            <strong>Location:</strong> New Jersey, USA | <strong>Phone:</strong> +1 201 423 0094
+        </p>
+    </footer>
+
+</div>
+
+</body>
+</html>
